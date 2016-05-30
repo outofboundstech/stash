@@ -1,0 +1,2 @@
+defmodule Stash do
+end
