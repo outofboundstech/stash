@@ -46,18 +46,6 @@ defmodule Stash.Registry do
     {:reply, Map.fetch(names, name), state}
   end
 
-  # def handle_cast({:create, name}, {names, refs}) do
-  #   if Map.has_key?(names, name) do
-  #     {:noreply, {names, refs}}
-  #   else
-  #     {:ok, pid} = Stash.Bucket.start_link
-  #     ref = Process.monitor(pid)
-  #     refs = Map.put(refs, ref, name)
-  #     names = Map.put(names, name, pid)
-  #     {:noreply, {names, refs}}
-  #   end
-  # end
-
   def handle_call({:create, name}, _from, {names, refs}) do
     case Map.get(names, name) do
       nil ->
