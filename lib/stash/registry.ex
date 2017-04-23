@@ -6,6 +6,7 @@ defmodule Stash.Registry do
   def stop, do: stop(__MODULE__)
   def start_link, do: start_link(__MODULE__)
   def lookup(name), do: lookup(__MODULE__, name)
+  def lookup!(name), do: lookup!(__MODULE__, name)
   def create(name), do: create(__MODULE__, name)
 
   @doc """
@@ -27,8 +28,12 @@ defmodule Stash.Registry do
 
   Returns `{:ok, pid}` if the bucket exists, `:error` otherwise.
   """
-  def lookup(server, name) do
-    GenServer.call(server, {:lookup, name})
+  def lookup(server, name), do: GenServer.call(server, {:lookup, name})
+  end
+
+  def lookup!(server, name) do
+    {:ok, pid} = lookup(server, name)
+    pid
   end
 
   @doc """
