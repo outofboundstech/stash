@@ -29,7 +29,6 @@ defmodule Stash.Registry do
   Returns `{:ok, pid}` if the bucket exists, `:error` otherwise.
   """
   def lookup(server, name), do: GenServer.call(server, {:lookup, name})
-  end
 
   def lookup!(server, name) do
     {:ok, pid} = lookup(server, name)
