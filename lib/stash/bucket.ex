@@ -7,7 +7,7 @@ defmodule Stash.Bucket do
   end
 
   @doc """
-  Gets a value from the `bucket` bu `key`.
+  Gets a value from the `bucket` by `key`.
   """
   def get(bucket, key) do
     Agent.get(bucket, &Map.get(&1, key))
