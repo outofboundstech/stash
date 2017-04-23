@@ -7,7 +7,7 @@ defmodule Stash.Supervisor do
 
   def init(:ok) do
     children = [
-      worker(Stash.Registry, [Stash.Registry]),
+      worker(Stash.Registry, []),
       supervisor(Stash.Bucket.Supervisor, [])
     ]
 
