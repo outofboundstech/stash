@@ -1,7 +1,14 @@
 defmodule Stash.Registry do
   use GenServer
 
+  @server Application.get_env(:stash, :registry_name)
+
   ## Client API
+
+  def stop, do: stop(@server)
+  def start_link, do: start_link(@server)
+  def lookup(name), do: lookup(@server, name)
+  def create(name), do: create(@server, name)
 
   @doc """
   Stops the registry.
